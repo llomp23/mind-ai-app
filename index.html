@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIND.AI - Sistema Operacional de Vida</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: rgba(255,255,255,0.95); padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header h1 { color: #667eea; margin-bottom: 10px; }
+        .auth-section { display: flex; gap: 10px; margin-top: 15px; }
+        .auth-section button, .auth-section input { padding: 10px 15px; border: none; border-radius: 5px; font-size: 14px; }
+        .auth-section input { flex: 1; background: #f0f0f0; }
+        .auth-section button { background: #667eea; color: white; cursor: pointer; }
+        .auth-section button:hover { background: #764ba2; }
+        .user-info { margin-top: 10px; font-size: 14px; color: #666; }
+        .main-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+        .mentors-panel { background: rgba(255,255,255,0.95); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .mentors-panel h2 { color: #667eea; margin-bottom: 15px; font-size: 18px; }
+        .mentor-btn { display: block; width: 100%; padding: 12px; margin: 8px 0; background: #f0f0f0; border: 2px solid #ddd; border-radius: 5px; cursor: pointer; text-align: left; transition: all 0.3s; }
+        .mentor-btn:hover { background: #667eea; color: white; border-color: #667eea; }
+        .mentor-btn.active { background: #667eea; color: white; border-color: #667eea; }
+        .chat-area { background: rgba(255,255,255,0.95); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; box-shadow: 0 4px 6px rgba(0,0,0,0.1); height: 600px; }
+        .chat-messages { flex: 1; overflow-y: auto; margin-bottom: 15px; border: 1px solid #eee; padding: 15px; border-radius: 5px; background: #fafafa; }
+        .message { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .message.user { background: #667eea; color: white; text-align: right; }
+        .message.mentor { background: #e8e8e8; color: #333; }
+        .chat-input-section { display: flex; gap: 10px; }
+        .chat-input-section input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .chat-input-section button { padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .chat-input-section button:hover { background: #764ba2; }
+        .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
+        .feature-btn { padding: 10px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 13px; }
+        .feature-btn:hover { background: #764ba2; }
+        @media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } .chat-area { height: 400px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 MIND.AI - Sistema Operacional de Vida</h1>
+            <p>Chat com 10 Mentores IA + Protocolos de Bem-estar</p>
+            <div class="auth-section">
+                <input type="email" id="emailInput" placeholder="Email" />
+                <input type="password" id="passwordInput" placeholder="Senha" />
+                <button onclick="login()">Login</button>
+                <button onclick="signup()">Registrar</button>
+                <button onclick="loginGoogle()">Google</button>
+                <button onclick="logout()" style="background: #e74c3c;">Logout</button>
+            </div>
+            <div class="user-info" id="userInfo">Usuário: Não autenticado</div>
+        </div>
+
+        <div class="main-grid">
+            <div class="mentors-panel">
+                <h2>10 Mentores IA</h2>
+                <button class="mentor-btn active" onclick="selectMentor(this, 'Estrategista')">1. Estrategista</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Curador')">2. Curador</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Cientista')">3. Cientista</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Estóico')">4. Estóico</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Místico')">5. Místico</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Educador')">6. Educador</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Terapeuta')">7. Terapeuta</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Quantum')">8. Quantum</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Catalisador')">9. Catalisador</button>
+                <button class="mentor-btn" onclick="selectMentor(this, 'Mesa Redonda')">10. Mesa Redonda</button>
+                
+                <div class="features">
+                    <button class="feature-btn" onclick="activateFeature('chat')">💬 Chat Livre</button>
+                    <button class="feature-btn" onclick="activateFeature('sos')">🆘 SOS Imediato</button>
+                    <button class="feature-btn" onclick="activateFeature('ansiedade')">😰 Ansiedade</button>
+                    <button class="feature-btn" onclick="activateFeature('solidao')">🤝 Solidão</button>
+                    <button class="feature-btn" onclick="recordAudio()">🎤 Gravar</button>
+                    <button class="feature-btn" onclick="speakText()">🔊 Escutar</button>
+                </div>
+            </div>
+
+            <div class="chat-area">
+                <h2 style="color: #667eea; margin-bottom: 10px;" id="mentorTitle">Estrategista</h2>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message mentor">Olá! Sou o Estrategista. Como posso ajudá-lo hoje?</div>
+                </div>
+                <div class="chat-input-section">
+                    <input type="text" id="messageInput" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)" />
+                    <button onclick="sendMessage()">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAy4nB2H6XqQ1p0wK1mL2nO3pQ4rS5tU6v",
+            authDomain: "mind-ai-app.firebaseapp.com",
+            projectId: "mind-ai-app",
+            storageBucket: "mind-ai-app.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:abcdef1234567890"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        let currentMentor = 'Estrategista';
+        let currentUser = null;
+
+        auth.onAuthStateChanged(user => {
+            currentUser = user;
+            updateUserInfo();
+        });
+
+        function updateUserInfo() {
+            const userInfo = document.getElementById('userInfo');
+            if (currentUser) {
+                userInfo.textContent = `Usuário: ${currentUser.email}`;
+            } else {
+                userInfo.textContent = 'Usuário: Não autenticado';
+            }
+        }
+
+        function login() {
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            auth.signInWithEmailAndPassword(email, password).catch(e => alert('Erro: ' + e.message));
+        }
+
+        function signup() {
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            auth.createUserWithEmailAndPassword(email, password).catch(e => alert('Erro: ' + e.message));
+        }
+
+        function loginGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).catch(e => alert('Erro: ' + e.message));
+        }
+
+        function logout() {
+            auth.signOut();
+        }
+
+        function selectMentor(button, mentor) {
+            document.querySelectorAll('.mentor-btn').forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+            currentMentor = mentor;
+            document.getElementById('mentorTitle').textContent = mentor;
+            document.getElementById('chatMessages').innerHTML = `<div class="message mentor">Olá! Sou o ${mentor}. Como posso ajudá-lo?</div>`;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML += `<div class="message user">${message}</div>`;
+            
+            if (currentUser) {
+                db.collection('messages').add({
+                    user: currentUser.email,
+                    mentor: currentMentor,
+                    message: message,
+                    timestamp: new Date()
+                });
+            }
+            
+            input.value = '';
+            setTimeout(() => {
+                chatMessages.innerHTML += `<div class="message mentor">${currentMentor} respondendo...</div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 500);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') sendMessage();
+        }
+
+        function activateFeature(feature) {
+            const features = {
+                'chat': '💬 Chat Livre - Converse livremente com seus mentores',
+                'sos': '🆘 SOS Imediato - Suporte urgente para crises',
+                'ansiedade': '😰 Protocolo Ansiedade - Exercícios para controlar ansiedade',
+                'solidao': '🤝 Protocolo Solidão - Técnicas para lidar com solidão'
+            };
+            alert(features[feature]);
+        }
+
+        function recordAudio() {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => alert('Gravação iniciada. (Demo)'))
+                    .catch(err => alert('Erro ao acessar microfone: ' + err.message));
+            }
+        }
+
+        function speakText() {
+            const text = 'Olá, sou seu assistente MIND.AI';
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'pt-BR';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+    </script>
+</body>
+</html>
