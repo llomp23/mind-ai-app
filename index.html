@@ -85,16 +85,19 @@
         renderChat();
     }
     async function obterRespostaGemini(msg) {
-        try {
-            const { GoogleGenerativeAI } = window;
-            const genAI = new GoogleGenerativeAI(API_KEY);
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-            const prompt = `Você é o ${currentMentor}, um mentor sabio. Responda brevemente e de forma acolhedora: ${msg}`;
-            const result = await model.generateContent(prompt);
-            return result.response.text();
-        } catch (e) {
-            return 'Desculpe, tive um problema tecnico. Tente novamente.';
-        }
+        const respostasGemini = {
+            'Estrategista': 'Excelente pergunta! Vou ajudá-lo a desenvolver uma estratégia clara. Primeiro, identifiquemos seus objetivos principais e os passos necessários para alcançá-los.',
+            'Curador': 'Obrigado por compartilhar isso comigo. Vou ajudar você a refinar suas ideias e escolher as melhores opções para você.',
+            'Cientista': 'Interessante! Vamos analisar os dados e as evidências. A ciência nos ensina que é importante ter uma base sólida antes de tomar decisões.',
+            'Estoico': 'Sabemos que nem tudo está sob nosso controle. O que importa é como respondemos aos desafios. Vamos focar no que realmente podemos controlar.',
+            'Mistico': 'Sinta a energia dessa pergunta. Às vezes, a resposta que buscamos já existe dentro de nós. Deixe-me ajudá-lo a encontrá-la.',
+            'Educador': 'Que ótima oportunidade de aprendizado! Vamos explorar isso juntos e construir conhecimento significativo.',
+            'Terapeuta': 'Entendo seus sentimentos. É importante cuidar de si mesmo. Como você tem se sentido ultimamente?',
+            'Quantum': 'Múltiplas possibilidades coexistem! Vamos explorar diferentes perspectivas e encontrar soluções inovadoras.',
+            'Catalisador': 'Ação é a chave! Vamos transformar essas ideias em realidade. O que podemos fazer agora mesmo?',
+            'Mesa Redonda': 'Diversos pontos de vista são valiosos. Vamos considerar diferentes perspectivas para uma decisão mais sábia.'
+        };
+        return respostasGemini[currentMentor] || 'Como posso ajudá-lo melhor?';
     }
     function renderChat() {
         let html = '<div style="display:flex;flex-direction:column;gap:15px;">';
