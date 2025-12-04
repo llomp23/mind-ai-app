@@ -1,159 +1,135 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Painel Central Mind.AI</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<style type="text/tailwindcss">
-    .material-symbols-outlined {
-      font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-    }
-  </style>
-<script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "primary": "#13c8ec",
-            "background-light": "#f6f8f8",
-            "background-dark": "#101f22",
-          },
-          fontFamily: {
-            "display": ["Manrope", "sans-serif"]
-          },
-          borderRadius: {
-            "DEFAULT": "0.25rem",
-            "lg": "0.5rem",
-            "xl": "0.75rem",
-            "full": "9999px"
-          },
-        },
-      },
-    }
-  </script>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
+<html class="dark" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MIND.AI - Sistema Operacional de Vida</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai"></script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
+        body { min-height: max(884px, 100dvh) }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13c8ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101f22"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
 <body class="bg-background-light dark:bg-background-dark font-display">
-<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
-<main class="flex-grow pb-24">
-<div class="pt-8 pb-3 px-4">
-<h2 class="text-zinc-800 dark:text-white tracking-tight text-[28px] font-bold leading-tight text-left">Olá, [Nome]!</h2>
-<p class="text-zinc-500 dark:text-zinc-400 text-base mt-1">"A paz vem de dentro. Não a procure fora."</p>
-</div>
-<div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-4 p-4">
-<div class="relative bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square overflow-hidden" data-alt="A person's hands cupped together, holding water with a single droplet falling, symbolizing immediate help." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLrf-H6LIVM6QH_kCNwJ0hV0lQoZP_VMSQKR8V4Dj6aokra3U1GzlqkS87pBoQl8rzxUwrXaNAxwle8tEPNfGFZiJNmA-secTfiimHZq6CUr43N0CHEOHMEXlettDkGboL_UcUHMO-F3uM9mCJ-oAZmrtUmcASMH3haI0V_OXeUWoxD65CwzAKn9QmHfpIPcx7Dd1aGxPwuV0mzMYZqsIMgmXg6H4gFs1QvRuZc2lYizuOKFCesiKNzBShJFPQTnyWLBoVWKkmSD4U");'>
-<p class="text-white text-base font-bold leading-tight line-clamp-2">SOS</p>
-</div>
-<div class="relative bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square overflow-hidden" data-alt="A brightly lit lightbulb against a dark background, representing a moment of clarity or a new idea." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAukX0TX1q3Pv5GOLpnJIs43wLk3QxkllI2tXdqmL4nieLRIcN6BfiMZHcs9BERhB4xVIYgEphYjU4djvleTAn1j_UTns0e9VNX4_wMiiVGnI0ohKEy3jGYrNWyp_cXGF78s00zJ3H_YLSbBWa0GzLlICWgUpmtbcyPyhsFrB1RxTSLKVtV47gNe6RWrMBRXYK-RovOuWQWcya3HkO3qp1hB4ilMNvAHrvK0lZhs92mFQhIhfpKaEi66Wh-WF7sEcvWOwxEMrVos2d2");'>
-<p class="text-white text-base font-bold leading-tight line-clamp-2">Insight</p>
-</div>
-<div class="relative bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square overflow-hidden" data-alt="Calm, serene water with ripples spreading outwards, representing the calming of anxious thoughts." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDG2CUjRds2coFxwycG4Uteu9K3ECaCG8z5NIwUyoP36hZAJcKI8FE1h7XsF6Xn3KJRR8M6qq7gQMra7BkSm_Rrgu4Fy1ugR0EgGGYe8IIxc_FqVMxn-FZt-mGP_YvX34iXFWAORtcQbPHuAmgn7lDMlUhlqQVlHIpwnkIosTKS5R3UwnDxJjVI4LuPRLpGfMI-DU4rHomEZjY505if3f0xHFWcdU7q5kisNDazFDGjKtNJgbuooPCLeojGS6zT6NXkTXEi308pxXTo");'>
-<p class="text-white text-base font-bold leading-tight line-clamp-2">Protocolo: Ansiedade</p>
-</div>
-<div class="relative bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square overflow-hidden" data-alt="A single tree standing alone in a vast, misty field, evoking a sense of solitude and contemplation." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDXSnsEzjz4SEKRmsLObIzCoMBMBZC8vXqGiG50FB1Oxtmn9zdgrfdPqyn-wKovadW0huZbBq-iXGOT5Pu8v0eIjbpzD5696VcxROXXfPAMScMk419upmnquajScb6T_IIMDrF4t3CAlVPE2D0mHDornR0FUzkR9TChxfvZHqmzefQAuWrW3tDec27kojHKeBiyxU5nGFkx2sF1bTugtCbpRtZyIySxn6zmfq30N_9JiHVrnw4eWoV7LqK0FD_XiyvBmMqm7x3o8XWa");'>
-<p class="text-white text-base font-bold leading-tight line-clamp-2">Protocolo: Solidão</p>
-</div>
-<div class="relative bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square overflow-hidden col-span-2" data-alt="An old, ornate compass on a map, symbolizing guidance through a difficult choice." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-588DuI6uB2NvBGrAorMd04CdCUgikD8f3pva3YfP5mYfm_FpgwVdzM17lMeUWzMGogQ4q2tukKRe7Yrz1SR5cz70HNkyay_9Eguisq-4heTGoyWAliwBYR8-77mP6ih9MNei4shy_e03i3uzkDF1-V-pu3DFYfk-v1cdVMvuUVP1ZQS2dGTqaWbTL45Goi8p6kurXNVjBVGdbTujv87dYYRS5ZxZ8a3tDYn42eNvubMbk1x60IPn8LZ9kT0jL6Roeq5Q1_wh-ppb");'>
-<p class="text-white text-base font-bold leading-tight line-clamp-2">Protocolo: Decisão Difícil</p>
-</div>
-</div>
-<div class="px-4 py-4 space-y-4">
-<div class="flex items-center gap-4">
-<img alt="O Estratégista - hyper-realistic image of a thoughtful, sharp-eyed man in a modern suit, looking over a city skyline at dusk." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaqKGCICTRj1AV04Cvs3BJ7Mn6q3UGqT2c3HQh8hEkyOGZ8pBS6NdL2WIrKfzTx90GmrQ7H1hMNiHPWXO_aHjJkzU5JaIAOiVmtrt3UCnK4sUVFM2FuYP_iHsrwTIDXg6acgf9vhSvboQyE-PZ1lromDsgY2tGB4C-UqtiI4ub5nKNwBDdinhwdpAZpiWR769t6fRebZpj4visyqWyySvjBoXQ-E0T-9Z80zN55D0ZWwHuYfyDIWBzJsd7PMamakladA4i9oJ6vqhG"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">O Estratégista</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Para tomadas de decisão e planejamento.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="Jesus - hyper-realistic image of a compassionate, serene man with a gentle expression, bathed in warm light." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbJfn3Zlk99hUGckLwqIeJyofE0sguAy0qa2YPfNdwMhtltbEChMfGrCLht5x6ME-it6d1gtk_pBaITW_RAVfwwYFtMcN7QYhzdhi3rCR7JIKZ6pVQ0QSLn5J7v1UY2MplnShnuKpL9rH242NOlGR2N1qmYb3IyHlxFaMuGUNnD0P70fSteEX4WLkSpmTEgyCCTuqAULaJg95WImR-s-ItEF6KEDdEStpdzsvFq6_S7bZ0QgY_4vVJsMhWgJSsgO9Y9vlPlgOK8ZhM"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">Jesus</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Para compaião, perdão e amor incondicional.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="O Sábio Estoíco - hyper-realistic image of an elder with a calm, weathered face, looking thoughtful amidst ancient ruins." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE8KdTECiwfFkxK_xFFadXSDGuZiNZrlR_iknCHDdinwI369cNtAUPqv7cLA59oKtIpzEB4NiPw-LcX6vFas21LIQUX621xL8kJNzkayjtqmxO4ZzAjBaYhwb1iMtC8BURc3E9uwALUhAd4FYuOCpkucJejGczJ4A7Sl93UP44CHIdAKl-VZm04HNJWsfx5_n8j5qjLr-7Zb_oWWoz8Z6IZ-sdZWgErhS7IA4xkoJJhQ4FE0nG6Fs0IwNT0h2i2AUlk6pb_Qj05c4N"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">O Sábio Estoíco</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Para resiliencia, aceitação e virtude.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="Rabi Shimon - hyper-realistic image of a scholarly man with a long beard, studying ancient texts in a dimly lit library." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiU2VJ88rNeqVnrwWcIahD15HMsJJ4csXVc4bb56dWarSItfTYAqu5LIDO-PBIelUDd9zoaJKnyusRT8DT-I5bRBoRsNHun_ongUcKVdOPHR5-1pnEebXkwiRYQLuc5naIwoOnyshcLt8de4o369w-tVbrPtkQSjGP332YTQW-Dvv69OrCL0JE9t5nGZgz4r5gmeBDiUJE6N7mZU9BAc6_1WaQHCiXPFbXF-uxPWRxcQkSnkfTsopqOIvPGQj1mSj1YNHSRVoFVSnK"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">Rabi Shimon</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Para sabedoria mística e insights profundos.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="O Educador - hyper-realistic image of a warm, approachable teacher in a vibrant classroom, guiding a student." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC-w_cMH_sE1sufPIMcEQhxMDaD4YkgG2i2fZUYNJ3Tomj6qL5rYutZHanUOVDs3qIhkg0iK4hdh6fu_SYoTJc6KeBfwNz3H0vp2-KCsMl4BnxFu2PzFXhlOdbagoGfun_MtA1eWvXECI4rcoURpIhwkNb75OqtEMOFy_XZA5roguyOfGRodc5qda7yKeVCHHALwwv90yx2NR7e2sUV8L97Qz9h5ysL2cZ3mvRyy0NqufQkc5bXXrt9w2rpFzhDS0rMi5TX3XAC4ZK"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">O Educador</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Para aprendizado, crescimento e clareza.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="O Terapeuta - hyper-realistic image of a kind, empathetic listener in a calm, comfortable office setting." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1MnUfPAtiZavOY4-FmIAtbMVUmzOclxaai0jsMsJFMqzOINPzxUGvgjCmYzY436ByavH_PZQu2jumiuLpR3UE7d3jjb1gX9V0hMbluDVGN-9_Ia9VdeUYhaQpLh8vN8wdwcd1FZ57rXV7Ym5uPraz5JZoXZHHM4u2XpJtEnJFU-DWEaR6vJTH1HW2IwjW5z75IBV7qQ3Y0cnxXZ7uaBj5IKSpT65e6FhQGVqmm4UbcFtULcmhShT1MZ6yGF_rb00uPUnU2Y1vPuMg"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">O Terapeuta</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Para cura emocional e autoconhecimento.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="Quantum Lumen - hyper-realistic image of an androgynous being made of light and cosmic energy, representing pure consciousness." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZnmOd8BEi7W3yb8MhSU-OFV7ZSWQPfqmrzOygkqLCsdThxMAKpTYlqQzy92pYYLdJ0vK0hexLEGJs_vedNfgLlx5gKoo6rapyxw9jT4odvJHbn7qbFZQUtPPkZECGKf47CcHBCLG7aUWLjNVsBOSGbOS5NSf1LXnjvoxo48mR4w54zCUJbZkba-CfUcnGo11ygOGhYaRrs09rdofhrdiebo2V-NP3DOouwXaBr4P4dmVSuedEnsTj2f3ALq9Pdd_Fsh0GnIKSBs7p"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">Quantum Lumen</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Para perspectivas quânticas e expansão da consciência.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<img alt="Mesa Redonda - hyper-realistic image of a diverse group of historical and futuristic figures seated at a large round table." class="h-16 w-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2kBYirufeGZC2TDdEZVux9mRzX8DbgQb7ADOX_dSbXAy7MQlwM5wAHP68UT-OSIPigYHjADdwlSSwbaaDm2K0jdVhFxvmHUp8GIIIfqz6DgO4VlPsUS3WdvHpnwzU7ylJ1F7iRIfqr9XnmjP0TcD4vROUMSMrfg87ycnyo5Eee1etgkiyXrOTY1rXfT92JRRyYo04rR6c3XVmGs9jUbwjoNkC3a-VPcqB6Y6dOOgcaW93dq0Ua6AUhCGCyiliJ4E6F-pdKaFXDiof"/>
-<div class="flex-1">
-<p class="font-bold text-zinc-800 dark:text-white">Mesa Redonda</p>
-<p class="text-sm text-zinc-500 dark:text-zinc-400 line-clamp-2">Convoque todos os mentores para uma deliberação.</p>
-</div>
-</div>
-<div class="relative bg-cover bg-center flex h-16 w-full items-center justify-between rounded-xl p-4 mt-2 overflow-hidden" style='background-image: linear-gradient(90deg, rgba(19, 200, 236, 0.8) 0%, rgba(20, 108, 148, 0.9) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCr-6RTg2NRUd9snQTTygYJlVyY_v7L56a6F2jNnfU20UXGtM4XY2FnszP7Z-JV5OkXAKLHFyw3QdLknnDXLvPKnjoICHOsLTb2xfsM2lwIHBeZq8WzSw1fWbWscdTgQ8mtt8xATFIW4FsmtMfMYBIyJ7Q1yE9EVtAfSiCX0HaIQrSt83mcE-fDp6WGrGzeWJ5Pb-jXbn-g6r3VmbRM5NT2HgmOJVRy-1wNUvB7isGJFDOyib6iS6JQi7YjK895JM9x39U98KbOukYF");'>
-<p class="text-lg font-bold text-white">Chat</p>
-<span class="material-symbols-outlined !text-3xl text-white">chat_bubble</span>
-</div>
-</div>
-</main>
-<div class="fixed bottom-0 left-0 right-0 z-10">
-<div class="flex gap-2 border-t border-zinc-200 dark:border-zinc-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 pb-3 pt-2">
-<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-<p class="text-primary text-xs font-medium leading-normal tracking-[0.015em]">Início</p>
-</a>
-<a class="flex flex-1 flex-col items-center justify-end gap-1 text-zinc-500 dark:text-zinc-400" href="#">
-<span class="material-symbols-outlined">trending_up</span>
-<p class="text-inherit text-xs font-medium leading-normal tracking-[0.015em]">Progresso</p>
-</a>
-<a class="flex flex-1 flex-col items-center justify-end gap-1 text-zinc-500 dark:text-zinc-400" href="#">
-<span class="material-symbols-outlined">person</span>
-<p class="text-inherit text-xs font-medium leading-normal tracking-[0.015em]">Perfil</p>
-</a>
-</div>
-</div>
-</div>
-
-</body></html>
+<div id="app"></div>
+<script>
+    const API_KEY = 'AIzaSyAy4nB2H6XqQ1p0wK1mL2nO3pQ4rS5tU6v';
+    let currentMentor = 'Estrategista';
+    let messages = [];
+    const mentores = [
+        { nome: 'Estrategista', emoji: '⚔️', descricao: 'Planejamento e foco' },
+        { nome: 'Curador', emoji: '🎨', descricao: 'Seleção e refinamento' },
+        { nome: 'Cientista', emoji: '🔬', descricao: 'Análise e dados' },
+        { nome: 'Estoico', emoji: '🏛️', descricao: 'Sabedoria e resiliência' },
+        { nome: 'Mistico', emoji: '✨', descricao: 'Intuição e propósito' },
+        { nome: 'Educador', emoji: '📚', descricao: 'Aprendizado contínuo' },
+        { nome: 'Terapeuta', emoji: '💚', descricao: 'Bem-estar emocional' },
+        { nome: 'Quantum', emoji: '⚛️', descricao: 'Inovação radical' },
+        { nome: 'Catalisador', emoji: '🚀', descricao: 'Ação e implementação' },
+        { nome: 'Mesa Redonda', emoji: '🤝', descricao: 'Perspectivas múltiplas' }
+    ];
+    function mostrarHome() {
+        const app = document.getElementById('app');
+        let mentoesHtml = '';
+        for (let i = 0; i < mentores.length; i++) {
+            mentoesHtml += `<button onclick="iniciarChat('${mentores[i].nome}')" style="background:#101f22;border:1px solid #234248;padding:20px;border-radius:12px;cursor:pointer;color:white;text-align:center"><div style="font-size:32px;margin-bottom:10px">${mentores[i].emoji}</div><div style="font-weight:600;margin-bottom:4px">${mentores[i].nome}</div><div style="font-size:12px;color:#999">${mentores[i].descricao}</div></button>`;
+        }
+        app.innerHTML = `
+            <div style="min-height:100dvh;background:#101f22;color:white;padding:20px;display:flex;flex-direction:column">
+                <div style="text-align:center;margin-bottom:40px">
+                    <h1 style="font-size:32px;font-weight:700;margin-bottom:8px">MIND.AI</h1>
+                    <p style="color:#999;font-size:14px">Sistema Operacional de Vida</p>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1">
+                    ${mentoesHtml}
+                </div>
+            </div>
+        `;
+    }
+    function iniciarChat(mentor) {
+        currentMentor = mentor;
+        messages = [];
+        mostrarChat();
+    }
+    async function enviarMensagem() {
+        const input = document.getElementById('messageInput');
+        const msg = input.value.trim();
+        if (!msg) return;
+        messages.push({ role: 'usuario', conteudo: msg });
+        input.value = '';
+        renderChat();
+        const resposta = await obterRespostaGemini(msg);
+        messages.push({ role: 'mentor', conteudo: resposta });
+        renderChat();
+    }
+    async function obterRespostaGemini(msg) {
+        try {
+            const { GoogleGenerativeAI } = window;
+            const genAI = new GoogleGenerativeAI(API_KEY);
+            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+            const prompt = `Você é o ${currentMentor}, um mentor sabio. Responda brevemente e de forma acolhedora: ${msg}`;
+            const result = await model.generateContent(prompt);
+            return result.response.text();
+        } catch (e) {
+            return 'Desculpe, tive um problema tecnico. Tente novamente.';
+        }
+    }
+    function renderChat() {
+        let html = '<div style="display:flex;flex-direction:column;gap:15px;">';
+        for (let m of messages) {
+            if (m.role === 'usuario') {
+                html += `<div style='text-align:right;margin:10px 0'><div style='background:#13c8ec;color:white;padding:12px;border-radius:12px;display:inline-block;max-width:70%'>${m.conteudo}</div></div>`;
+            } else {
+                html += `<div style='text-align:left;margin:10px 0'><div style='background:#234248;color:white;padding:12px;border-radius:12px;display:inline-block;max-width:70%'>${m.conteudo}</div></div>`;
+            }
+        }
+        html += '</div>';
+        document.getElementById('messagesArea').innerHTML = html;
+        document.getElementById('messagesArea').scrollTop = document.getElementById('messagesArea').scrollHeight;
+    }
+    function mostrarChat() {
+        const app = document.getElementById('app');
+        const mentorData = mentores.find(m => m.nome === currentMentor) || mentores[0];
+        app.innerHTML = `
+            <div style='height:100dvh;display:flex;flex-direction:column;background:#101f22;color:white'>
+                <div style='display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid #234248'>
+                    <button onclick='mostrarHome()' style='background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:8px'>←</button>
+                    <h2 style='font-size:18px;font-weight:600'>${mentorData.emoji} ${currentMentor}</h2>
+                    <button style='background:none;border:none;color:white;font-size:24px;cursor:pointer'>⋮</button>
+                </div>
+                <div id='messagesArea' style='flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px'></div>
+                <div style='display:flex;gap:10px;padding:20px;border-top:1px solid #234248'>
+                    <input id='messageInput' type='text' placeholder='Digite sua mensagem...' onkeypress="if(event.key==='Enter')enviarMensagem()" style='flex:1;background:#234248;border:1px solid #345860;padding:12px;border-radius:12px;color:white;font-size:14px' />
+                    <button onclick='enviarMensagem()' style='background:#13c8ec;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:20px'>→</button>
+                </div>
+            </div>
+        `;
+        renderChat();
+        document.getElementById('messageInput').focus();
+    }
+    window.onload = () => mostrarHome();
+</script>
+</body>
+</html>
