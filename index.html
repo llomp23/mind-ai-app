@@ -1,179 +1,305 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Seleção de Mentores - Final V2</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            primary: "#6366F1",
-            "background-light": "#F3F4F6",
-            "background-dark": "#111827",
-          },
-          fontFamily: {
-            display: ["Roboto", "sans-serif"],
-          },
-          borderRadius: {
-            DEFAULT: "1rem",
-          },
-        },
-      },
-    };
-  </script>
-<style>
-    body {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background-dark font-display">
-<div class="mx-auto max-w-md bg-background-dark p-4">
-<header class="flex items-start justify-between mb-8">
-<div class="flex items-center space-x-4">
-<div class="bg-primary w-12 h-12 rounded-lg flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-3xl">spark</span>
-</div>
-<div>
-<h1 class="text-xl font-bold text-white">MIND.AI</h1>
-</div>
-</div>
-<button class="text-gray-400 hover:text-white">
-<span class="material-symbols-outlined text-3xl">close</span>
-</button>
-</header>
-<main class="space-y-3">
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="A man analyzing data on a futuristic screen in a modern office." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD38RF-mjao4fPuSaoKLtIHgIsYLedRUUlC8KexoonBH8sm8tknoZ_1DuQpRNVCfHEM1LxUO6O8UiF21kjizynE-dStjjqG4j9AIzER9UJHjiHmSKFSU8tryth5u3a20ISeAYW4sK-coXvohNZ13NdRLMJ44nCxu9xNfOgiCE3T0NmVtobktbh3rtRnyjDmvTZXLNiDEjpfF4YNYyxtHUvdoL-8xNt-AwkAoOz5QNlwRdJYZ_eQS_MJodEzfomEE8pZZoGc-2JaldRy"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Close up of a man in a blue shirt working on a laptop." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV7R3T1U4zRLoDuLFkcc6pAAdBAUZ2Ypzg72NXsHOs5BW4zS8SJvc9AIUh3WUqQuxvujmyc64nKSDIkHF8cQ462DH21QBrCxjHSNvDrvM2m_vYf0LBMO5li-6x5A4qh5uP1LcD55iDxEriuLzytQQmsg3Sv3H-jfT0LGNeSpWFyrmLYCYOYmiPd9fpl-QgseTDZFD71aPccwANtp5t3MuLOdQpbC7m94f8lfHk5EuktuapwiqL-ePU7bgadLK8U5XfIK440v2d9EMG"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">O Estratégista</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">Liderança &amp; Negócios</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="A unique representation of wisdom and compassion, visually combining the figure of Jesus and a stoic philosopher's statue." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGoCuIP_jE6NqlnJvqrbTAuPFguTeSUi2SxLR8EaTbP_DjCHh7hee71fNgbRViLtOS8Btu6Pr7zEqIowv20vGS4rmd-MG7cZdOjAHu_sS7pM21VjR_jG4llsf6ULXXqXyRK_CQ0ShdeYYfxEYb3jd4F1mYvE1s8Gkc8T-hzNmMuqxLRomuYg9WEdr4vc3Ox-xFitXm-OHhzkBgD1l1R_4kMUlYVd2sm--RNL-weMdg1RP5B-KYAjcxyZAoZk5zBs81kowE0HWf29ta"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Close up of a marble bust of a stoic philosopher." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVolysPXY9WbOSpti8wTk6VOx5XWpoEDEebHQYrv0TalZX-as2sIyboaxwavOaiHUGD8PEjZG3cfy2iRydNlE3fbxTkUzu941_aKMzcNT2EA8h25iwCbn5sEy6hM8xwtGLrrR3ZXfgTtXW0DAoL9SFBjwFGx3coj5d6q-q4tuOIqbW5zEfkrPjBW4T237Ndse9gkKFiev6WdRMrJtmc-qpjRGra-6d4qF4WUaGU8WL3upD7jijsDxjn7BvV5mQj9CL0f_UTrmokOdq"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">O Sábio</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">FILOSOFIA SENICA AMOR E PERDÃO</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="A wise Rabbi holding an ancient, mystical book." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi5hEeQ2XYI3hI6BSHjxAxtPTfdu0_GCB9R6Lst_fW-nt4HAuKT2M1mzoGJCRLnVmQ_0MDtvqRPTrFGTIospmpHlS1WlUZ2kqAs50FEvjmX5d0LTYZa6U-0D1Gb9Ouzkhd6ZT2L9fLcn-f2LsNb6SBsMirMe3sj-CSiZr1BFls4Yc7bF3sTm8YZxDpAOqZTnVMwsMnEF5fYvPMRUaXQfqh7DvYcOSd52hHOzo7QBY6StBi6_kTQguW65SF1qDIQzpZyofx9r7ygeNM"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Portrait of a wise Rabbi with a long white beard." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfxqQ9t_D2MWDoNs5qAQIAYYd-zRijqfz84BQTMaER2lsrCyvKv5E5K1XMXdHZDSSlzHuI-f9SriInrHdDpXwS0Z_0r_LLDl25tE97DWdq8XPz3W2N3e241sYo4R_VJjKszB6YE8_yd-JsviSSKN7eQzmPV356xeDnmGfkCfTFy7VVgjff7DypqjJsNMtzsjKjovXZkqf-B0gYmgSKtGVmpfx2-msA08oGx6sV9P0woy_FGUPrsdfpSTVjP3KMx4XkSBV51taSL4N0"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">Rabi Shimon</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">Kabbalah Prática &amp; Sabedoria Oculta</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="An inspiring learning scene with a mentor explaining something to a student with a glow of knowledge." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYQDcqyLyjqH9PLDWTQ7wBITPOp7VrzMBDf-zlzY8vtJ3Azq-5DuMnWZ-fmysKrO9rUHMnmSYF1eMpdDi-BE1LrfroCP_lp-qwzGAK-RHvvOQzZd-UyEy9Un5XNqikW3sT3Bw_XToLwMFFNE4pxlH9U5R-avyMzixeXxtRQDQg3weoKznKHKsb_Knt-C-8_OkS788Cb_Trf1OWJLZdhCNroZNwF_4sySbEPIGiPqg483ar_DRGau9_v4YL8t0Pr0neFTrIHDZdTMWf"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Close up of a mentor's face, filled with wisdom and kindness." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu64veMHQGzI_5EahtyDu0f6m_j1g5mb7j2XT7xrqJsNQ8RCAGTyIggikpFszzkJuzR_U3UkII1MsJECW7naQq-XvdJ1sHZfGQJXLgoOmRn1tcILSClKUHb4JFmhu_37vV2tTtmTKMmydCoVhPTSEKwDpDSXTOTw78L9lWzHYQ-RzIhGiHRJnU6aS-LgvmNWEodnajpL_WfTpMmP21EoOvFrjsmjb6NMay6RFkTLwUa5_Z6KKYZ4z1M7MAu3PtY9cRfrHzhXuFI6b1"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">O Educador</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">Conhecimento &amp; Aprendizado</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="Abstract representation of energy and transformation with bright sparks and a figure in motion." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB93bBd_ajO0KyO6Swjqdd7A8UNEA5nyM03X0dQd1aV0yTTJhChhJz02kPJpk3-VfxfiwwYJ1x_mXpKTWkuuzgsLBzTN7YJOITovbKV5fGE0FAPi1ayo7ymsh2vVRNDAFRC_1d_IzuyRfWy8WOf7yUJgEifSOQYsC9KAiTsa8m4OCSQ7nfHV70klCDChHY60tk-s6LwhW6KJIeNiNf3uLny3vRV3LQ6ny5lcq4wTDcBWQCV1nCNKWp8MzNDtrGpAimFCeBKG3rKmZue"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Close up of energetic sparks representing transformation." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXpdCgR12B7msqnT5rYQhNPA1L2HIl3nYbyUq_-uOyarcNxTTRlm6TiM0hjCaKpmefr__uMlsdWDGZ6O8YZKJLuVIhneey1Rbpba2uLHu1ZeL3fy6giG3h7cYmwzzFvzmzwmgZr0F2DoH_W_z2-6S4KVj_Xk6jJLaoyKM34EKkwdthuahAUWpr3c-yZBJDn-xqz5LLqeCjB3P5uoa8Vg1U4TqWCHkl3Buet6wWZ6MMAQpmlyMuTspWAr6L0EX5fpZiRwIlcaJzfAfP"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">O Catalisador</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">Transformação e Impulso</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="A serene beach at sunset with calm waves." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_dmmTzzydI6aIS9nY2n7MU7gsY8k7hNubO9XExi1y4H0Yal6lAOiULYvPt_wZD90OjqO7SCdk5aPd9QZSo27UGQmx0q1QJmq9dFXF_05FrCGKW49l-ncoRQ_VaZJyKtqZFetNwIcJ6qR64-_vQVuBcIVH3_DyYRCm0fF1ocg7gfFSP_0BfbY3AJBwkigPTipydSyKC8c_v6uGRk5cAbfBWm5KcsUqpgKAiGVGql-57nB8ywCOb8choiW6ASoXi-xvOnQpDRTwxL69"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Close up view of a serene beach at sunset." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuQtOgGiL3qDC6hJvmCpodw-wHuzsykorekx4XDojJZh2SuCtgpVPK2oKhX766v117pT0aiXw-zsPUWuZBzzR5IluLBNERVd0ERXSD_wFH7DlYtCPw_iELN3FVv6GntarFQdwl2eq7oFiFf59QJcHKrW9Gd6ZCvKFRvxUUic38VpY0cJFYhRbQRkAFT0L1WIb6eQyh0nd5Q0-AKC_bvMrBJLCMZEkN5rbZo_Hl1r6379YpVKlbJw4AOlLA55fh2dXGhBCYf3N_fY1f"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">O Terapeuta</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">Relacionamentos (Gottman)</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="An abstract cosmic explosion of light and energy." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDtx849D5fV00nWPjeZlUHKubu4Lu-WwPy8ixJZ0oqu0p9C_Tv5FNP3dEtoMt5MGO_vTbgFRZNZxH3UUFEF4DVJTS5BQWhe87c63M5G02drZ_eNkfr5kpoivRqQcciRAQtuf2pvkilnaConibI5MSdJlvFw4tBlP-tl9msVoBr3GcqBmdQLbLQi8zHuHcW6rQ5DGWZlOOYjm3ZO4qhDgjFkJpYCdAT0RS7rnzxqNCJgBdnvLy-fu7FxGTNu1Ci4p70wWkjhk5aOS3C"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="A bright fountain of light." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANfLGr-m47yFBxJaccV3DiC2l29dBAZD5ZN8fNB6iamB2SzfLvZwsaXzf6JpnRolaHFgc-E5kRdFXs0_2Ja3rik1Galr2V7u8pV9zCmT6JYbjNckg_uBNF438WJR_C1HmfjLPSVLWfMHU-sacpP-5DJt54YS7T0Qhqw6OEsAMN6LA8EJQNRfhah9eJUmwTUran4-7FSFCpJsjqvcriE0aJD1wIrw5U8eiFHlglrMP37q1iyl8RoxJRuFsvK2kWsdkMFMQ-VjPRl5u1"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">Quantum Lumen</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">Criação da Realidade</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
-<img alt="An elegant dark wood round table surrounded by several empty chairs, with a spotlight from above." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtOFOPPaIcfInAWb90oyAWzCoew0ZEGF3ATa9yQJaq4E1gET0yhUoHRt5EfKTTkT7VIDtM7OVL8Vtea_Tz-rlLsMB6qRR1_LYSC6Ikx3qMcchYlZmf4X6EoyJtLxs2tIuApAzxMwDJbsqEV7HB3NWvNA-PAjplOLndCYmNzVm4jiDmKVcBqtIsifTFhHGr8o28i0jqusPrtGTcuV-6lo5fy1imilgPXOTnBC-I2XWvQYFXmbs7Ml_xmH-WI2x1c4gER5-nq964TgYN"/>
-<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
-<img alt="Close up of a diverse group of people standing together." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMxL0JY-B3CObk1_UdkgoJaVwRcK2SdlxSOFiIk1sAbwQOA4knJXyUFReKMnI7C91lXjICfDAtJGbczTdffSRzO7u7RKCLTuuCfyKchfoWkV_1-Zs0Roo2VM-yTrZO1X9Y9Q9rYsBfy731e2KOWWgOxu4j9dJFia3sIzwPte9kgc47CwmZ9aH_3NVuGlEVewkr6cT_Xz4w-3jqK9IRVFdv8KYN9t70YDe8lrANouek9EJb0aYLED1Lq8TOpZj_eVGxrdnH4GXj0GFO"/>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">Mesa Redonda</h2>
-<p class="text-xs uppercase text-gray-300 tracking-wider">Conselho Unificado</p>
-</div>
-</div>
-</a>
-<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group bg-gray-800" href="#">
-<img alt="A stylized representation of a chat interface." class="absolute right-0 bottom-0 h-full w-auto opacity-20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdc4Ho5I8uGuyas4RG9fIppd9KQaTYG_envWC4CFdjuDd4MQq9pAhPD5Bzg_kln4V1AkG7Cbn-zWWs6OgYck91Fk7VGzTNXaDwrUKZQiiIUfyzTmUXmw4YeB6-VegSjveUpkjrBnRLfBrbt6VnvG3CeFefWH7SCKI0i8ryeilC_mztfJWKznXEUB7GLyD_YMuwp2yG3A7BadFi1-NN_Dqn0PjXodwmH8uF_dimx_JeWcda-UBUu7fdZJEz1ZCScaNeoAlsOR8CjAsj"/>
-<div class="relative flex items-center w-full px-4 space-x-4">
-<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-gray-700 flex items-center justify-center">
-<span class="material-symbols-outlined text-gray-400 text-3xl">chat_bubble</span>
-</div>
-<div class="text-white">
-<h2 class="font-bold text-lg">Chat</h2>
-<p class="text-xs uppercase text-gray-400 tracking-wider">Comunicação</p>
-</div>
-</div>
-</a>
-</main>
-</div>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MIND.AI - Sistema Operacional de Vida</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai"></script>
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        body { -webkit-font-smoothing: antialiased; background: #0f0f0f; }
+        .gradient-text { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .chat-message { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .mentor-btn { transition: all 0.2s ease; }
+        .mentor-btn:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Home Screen -->
+    <div id="homeScreen" class="min-h-screen px-6 py-8 flex flex-col">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-bold gradient-text">MIND.AI</h1>
+            <p class="text-gray-400 text-sm">Sistema de Vida</p>
+        </div>
 
-</body></html>
+        <div class="flex-1">
+            <h2 class="text-3xl font-bold mb-2">Seleção de Mentores</h2>
+            <p class="text-gray-400 mb-8">Escolha um mentor para iniciar a convers</p>ação</p>
+
+            <div id="mentorsGrid" class="grid grid-cols-1 gap-4 max-w-2xl">
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chatScreen" class="hidden fixed inset-0 bg-black flex flex-col">
+        <!-- Header -->
+        <div class="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <button id="backBtn" class="text-gray-400 hover:text-white transition">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <div>
+                    <h2 id="chatMentorName" class="font-bold text-lg">Mentor</h2>
+                    <p id="chatMentorRole" class="text-xs text-gray-400">Expertise</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="messagesContainer" class="flex-1 overflow-y-auto px-6 py-6 space-y-4">
+        </div>
+
+        <!-- Input Area -->
+        <div class="bg-gray-900 border-t border-gray-800 px-6 py-4">
+            <div class="flex gap-3">
+                <input id="messageInput" type="text" placeholder="Escreva sua mensagem..." class="flex-1 bg-gray-800 text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-indigo-500 focus:outline-none" />
+                <button id="sendBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition font-medium">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template para botões dos mentores -->
+    <template id="mentorTemplate">
+        <button class="mentor-btn relative flex items-center h-20 rounded-2xl overflow-hidden group">
+            <img class="absolute inset-0 w-full h-full object-cover" alt="Mentor" />
+            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+            <div class="relative flex items-center w-full px-4 space-x-4">
+                <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+                    <img class="w-full h-full object-cover" alt="Avatar" />
+                </div>
+                <div class="text-white">
+                    <h2 class="font-bold text-lg"></h2>
+                    <p class="text-xs uppercase text-gray-300 tracking-wider"></p>
+                </div>
+            </div>
+        </button>
+    </template>
+
+    <script>
+        const mentors = [
+            {
+                id: 'estrategista',
+                name: 'O Estratégista',
+                role: 'Análise Estratégica',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDKzWEEAYkHXZJKLJ8fX1iEcFkFHqTkzDvApQVTYsflPLtI0R0GISF9HuQoFhJLg6N5KSb6kFPWFvV5n-NvQlmQcCk4iEJvVa4X6Zk=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBrWfWVEpOjB8QrKjZHjvz3lh7e-OX8tTqYVVuFxKVfUuHhFvHajw5YeLHJJTCNME5xmcH-PnEJA3nwlz3QOcN9H1XKBhR1nGhb9QX=w256',
+                personality: 'analítico, estratégico, focado em soluções práticas'
+            },
+            {
+                id: 'sabio',
+                name: 'O Sábio',
+                role: 'Sabedoria Antiga',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC4l8S7Oeya2-6rEf9mKcK5zqKcMFhOkQc6uDgP9Q9gHqKvQC1OxUzLSbF8vz5YsxlXHCGzrKPu01gJbZ9vJXIEMVqaJtH5J_g8yQ=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBB-UzLX6GqHQPzPB9F5JkQVVhZxNqCaXy47yL_gfKU6cVBvdAhDUdWqDwFv7lZqvVjQvQ3EUEm6RXJX2d0p4AkSe3uxBcxmCR0G=w256',
+                personality: 'sábio, refletido, oferece perspectivas profundas'
+            },
+            {
+                id: 'estoico',
+                name: 'O Estoíco',
+                role: 'Filosofia Estoíca',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC4l8S7Oeya2-6rEf9mKcK5zqKcMFhOkQc6uDgP9Q9gHqKvQC1OxUzLSbF8vz5YsxlXHCGzrKPu01gJbZ9vJXIEMVqaJtH5J_g8yQ=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBB-UzLX6GqHQPzPB9F5JkQVVhZxNqCaXy47yL_gfKU6cVBvdAhDUdWqDwFv7lZqvVjQvQ3EUEm6RXJX2d0p4AkSe3uxBcxmCR0G=w256',
+                personality: 'calmo, focado no que podemos controlar, resiliente'
+            },
+            {
+                id: 'educador',
+                name: 'O Educador',
+                role: 'Ensino e Aprendizado',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKfhJmNaYs-zBJjYhEtbKHnUgLxIqMJbgrw_kGXyEh9lH9XH_TZlLTWWxZfKCLW1b5iLHfAkDWOQwKnvQWWKTg67U5X1yAuGxBKEf=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDDj0-6vB3NI_BgWCh2kAf0xZtxL_cONJe56BnGBVuWt_Ss3VuPJLZVYcx4cxqJ3D3c7RfVxCQ9q0F7TdN0JjPVMGjJHzAquXi3g_xI=w256',
+                personality: 'paciente, motivador, explica com clareza'
+            },
+            {
+                id: 'catalisador',
+                name: 'O Catalisador',
+                role: 'Transformação e Ação',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBDtx849D5fV00nWPjeZlUHKubu4Lu-WwPy8ixJZ0oqu0p9C_Tv5FNP3dEtoMt5MGO_vTbgFRZNZxH3UUFEF4DVJTS5BQWhe87c63M5G02drZ_eNkfr5kpoivRqQcciRAQtuf2pvkilnaConibI5MSdJlvFw4tBlP-tl9msVoBr3GcqBmdQLbLQi8zHuHcW6rQ5DGWZlOOYjm3ZO4qhDgjFkJpYCdAT0RS7rnzxqNCJgBdnvLy-fu7FxGTNu1Ci4p70wWkjhk5aOS3C=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAH94PzUkQZKLuqvCaE9aSIa0rTnVKdl-v6ZTB9D9_jZDT0R65wX_7eJg0RvxHLl4gDfAhqzPZ3FPJtAiD3q_rSDqDhLpLXN6F3w=w256',
+                personality: 'energizado, focado em ação, transforma idéias em realidade'
+            },
+            {
+                id: 'terapeuta',
+                name: 'O Terapeuta',
+                role: 'Bem-estar Emocional',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC_dmmTzzydI6aIS9nY2n7MU7gsY8k7hNubO9XExi1y4H0Yal6lAOiULYvPt_wZD90OjqO7SCdk5aPd9QZSo27UGQmx0q1QJmq9dFXF_05FrCGKW49l-ncoRQ_VaZJyKtqZFetNwIcJ6qR64-_vQVuBcIVH3_DyYRCm0fF1ocg7gfFSP_0BfbY3AJBwkigPTipydSyKC8c_v6uGRk5cAbfBWm5KcsUqpgKAiGVGql-57nB8ywCOb8choiW6ASoXi-xvOnQpDRTwxL69=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBuQtOgGiL3qDC6hJvmCpodw-wHuzsykorekx4XDojJZh2SuCtgpVPK2oKhX766v117pT0aiXw-zsPUWuZBzzR5IluLBNERVd0ERXSD_wFH7DlYtCPw_iELN3FVv6GntarFQdwl2eq7oFiFf59QJcHKrW9Gd6ZCvKFRvxUUic38VpY0cJFYhRbQRkAFT0L1WIb6eQyh0nd5Q0-AKC_bvMrBJLCMZEkN5rbZo_Hl1r6379YpVKlbJw4AOlLA55fh2dXGhBCYf3N_fY1f=w256',
+                personality: 'empatético, compreensivo, oferece apoio emocional'
+            },
+            {
+                id: 'quantum',
+                name: 'Quantum Lumen',
+                role: 'Criação da Realidade',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBDtx849D5fV00nWPjeZlUHKubu4Lu-WwPy8ixJZ0oqu0p9C_Tv5FNP3dEtoMt5MGO_vTbgFRZNZxH3UUFEF4DVJTS5BQWhe87c63M5G02drZ_eNkfr5kpoivRqQcciRAQtuf2pvkilnaConibI5MSdJlvFw4tBlP-tl9msVoBr3GcqBmdQLbLQi8zHuHcW6rQ5DGWZlOOYjm3ZO4qhDgjFkJpYCdAT0RS7rnzxqNCJgBdnvLy-fu7FxGTNu1Ci4p70wWkjhk5aOS3C=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuANfLGr-m47yFBxJaccV3DiC2l29dBAZD5ZN8fNB6iamB2SzfLvZwsaXzf6JpnRolaHFgc-E5kRdFXs0_2Ja3rik1Galr2V7u8pV9zCmT6JYbjNckg_uBNF438WJR_C1HmfjLPSVLWfMHU-sacpP-5DJt54YS7T0Qhqw6OEsAMN6LA8EJQNRfhah9eJUmwTUran4-7FSFCpJsjqvcriE0aJD1wIrw5U8eiFHlglrMP37q1iyl8RoxJRuFsvK2kWsdkMFMQ-VjPRl5u1=w256',
+                personality: 'vição amplificada, conectado à energia cósmica, transformador'
+            },
+            {
+                id: 'redonda',
+                name: 'Mesa Redonda',
+                role: 'Conselho Unificado',
+                bgImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCtOFOPPaIcfInAWb90oyAWzCoew0ZEGF3ATa9yQJaq4E1gET0yhUoHRt5EfKTTkT7VIDtM7OVL8Vtea_Tz-rlLsMB6qRR1_LYSC6Ikx3qMcchYlZmf4X6EoyJtLxs2tIuApAzxMwDJbsqEV7HB3NWvNA-PAjplOLndCYmNzVm4jiDmKVcBqtIsifTFhHGr8o28i0jqusPrtGTcuV-6lo5fy1imilgPXOTnBC-I2XWvQYFXmbs7Ml_xmH-WI2x1c4gER5-nq964TgYN=w1024',
+                avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCMxL0JY-B3CObk1_UdkgoJaVwRcK2SdlxSOFiIk1sAbwQOA4knJXyUFReKMnI7C91lXjICfDAtJGbczTdffSRzO7u7RKCLTuuCfyKchfoWkV_1-Zs0Roo2VM-yTrZO1X9Y9Q9rYsBfy731e2KOWWgOxu4j9dJFia3sIzwPte9kgc47CwmZ9aH_3NVuGlEVewkr6cT_Xz4w-3jqK9IRVFdv8KYN9t70YDe8lrANouek9EJb0aYLED1Lq8TOpZj_eVGxrdnH4GXj0GFO=w256',
+                personality: 'integrador, diverso, oferece perspectivas múltiplas'
+            }
+        ];
+
+        // Estado da aplicação
+        let currentMentor = null;
+        let chatHistory = [];
+
+        // Renderizar grid de mentores
+        function renderMentors() {
+            const grid = document.getElementById('mentorsGrid');
+            grid.innerHTML = '';
+            mentors.forEach(mentor => {
+                const template = document.getElementById('mentorTemplate');
+                const clone = template.content.cloneNode(true);
+                const btn = clone.querySelector('button');
+                
+                btn.querySelector('img:first-of-type').src = mentor.bgImage;
+                btn.querySelector('img:last-of-type').src = mentor.avatar;
+                clone.querySelector('h2').textContent = mentor.name;
+                clone.querySelector('p').textContent = mentor.role;
+                
+                btn.addEventListener('click', () => openChat(mentor));
+                grid.appendChild(clone);
+            });
+        }
+
+        // Abrir tela de chat
+        function openChat(mentor) {
+            currentMentor = mentor;
+            chatHistory = [];
+            document.getElementById('homeScreen').classList.add('hidden');
+            document.getElementById('chatScreen').classList.remove('hidden');
+            document.getElementById('chatMentorName').textContent = mentor.name;
+            document.getElementById('chatMentorRole').textContent = mentor.role;
+            document.getElementById('messagesContainer').innerHTML = '';
+        }
+
+        // Voltar para home
+        document.getElementById('backBtn').addEventListener('click', () => {
+            document.getElementById('chatScreen').classList.add('hidden');
+            document.getElementById('homeScreen').classList.remove('hidden');
+            currentMentor = null;
+            chatHistory = [];
+        });
+
+        // Enviar mensagem
+        document.getElementById('sendBtn').addEventListener('click', sendMessage);
+        document.getElementById('messageInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (!message || !currentMentor) return;
+
+            // Adicionar mensagem do usuário
+            addMessage(message, 'user');
+            input.value = '';
+            chatHistory.push({ role: 'user', content: message });
+
+            // Simular delay e enviar resposta do mentor
+            setTimeout(() => {
+                getResponse(message).then(response => {
+                    addMessage(response, 'mentor');
+                    chatHistory.push({ role: 'mentor', content: response });
+                });
+            }, 500);
+        }
+
+        function addMessage(text, sender) {
+            const container = document.getElementById('messagesContainer');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `chat-message flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = `max-w-xs px-4 py-3 rounded-lg ${
+                sender === 'user' 
+                    ? 'bg-indigo-600 text-white rounded-br-none' 
+                    : 'bg-gray-800 text-gray-100 rounded-bl-none'
+            }`;
+            bubble.textContent = text;
+            
+            msgDiv.appendChild(bubble);
+            container.appendChild(msgDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Respostas contextualizadas por mentor
+        const mentorResponses = {
+            'estrategista': [
+                'Este é um problema que requer uma análise detalhada. Vamos quebrá-lo em partes menoré e identificar os pontos de alavanca.',
+                'Qual é seu objetivo principal aqui? Identificar o alvo correto é crucial para qualquer estratégia efetiva.',
+                'Considere estes ángulos: (1) Recursos disponíveis, (2) Timeline, (3) Competição. Como isso se encaixa?',
+                'A melhor estratégia frequentemente vem de explorar gap no mercado ou em sua situação.'
+            ],
+            'sabio': [
+                'Há sabedoria em desacelerar e observar o padrão maior das coisas.',
+                'Lembre-se: o que parece um obstáculo hoje pode ser uma oportunidade de amanhã.',
+                'A verdadeira compreensão vem do repouso, não da ação frenética. Pause e observe.',
+                'Cada ciclo lhe ensina algo se você estiver atento. Qual é a lição aqui?'
+            ],
+            'estoico': [
+                'Foque naquilo que está sob seu controle. Deixe ir o que não está.',
+                'A aflicão geralmente vem de desejar que as coisas fossem diferentes. Aceite o que é e ação com sabedoria.',
+                'Sua resposta à adversidade é tudo. Escolha a que lhe dá força e propósito.',
+                'Lembre-se: não são os eventos que nos perturbam, mas nossa interpretação deles.'
+            ],
+            'educador': [
+                'Tima pergunta! Vamos explora isso passo a passo.',
+                'Ótimo, você está pensando certo. Agora deixe-me decompor isso em conceitos-chave.',
+                'Você consegue ver como isso se conecta ao que aprendemos antes?',
+                'Pratique isso realmente. A repetição é a mãe da maestria.'
+            ],
+            'catalisador': [
+                'Perfeito! Vejo a energia aqui. Vamos transformar essa idéia em ação real!',
+                'A mudança começa AGORA. Qual é o primeiro passo concreto que você pode tomar hoje?',
+                'Sim, sim, SIM! Mantenha esse momentum. A é um catalisador, não espectemão.',
+                'Imagino você já no resultado. Como você se sente nesse novo estado?'
+            ],
+            'terapeuta': [
+                'Obrigado por compartilhar isso. Como se sente realmente ao falar disso?',
+                'Vejo sua luta aqui. Você não está sozinho nisso. Vamos explorar isso juntos.',
+                'Sua emocionação é válida. O que você precisa ouvir de si mesmo agora?',
+                'Há força em você que pode não está reconhecendo. Vamos iluminar isso.'
+            ],
+            'quantum': [
+                'Fascinante. Vejo um padrão quântico aqui que precisa ser harmonizado.',
+                'A energia disponível é ilimitada. A questão é: como você vai canalizá-la?',
+                'Você é um criador de realidades. Qual realidade está pronto para manifestar?',
+                'A expansão começa quando você cessa de limitar-se. Vamos descentralizar os bloqueios.'
+            ],
+            'redonda': [
+                'Perspectivas interessantes convergem aqui. Vamos ouvir todos os ângulos.',
+                'Neste conselho, cada voz importa. Qual é a sabedoria que cada parte de você está tentando compartilhar?',
+                'A integridade vem quando todas as partes trabalham juntas. Como harmonizar isso?',
+                'Vejo múltiplos caminhos viáveis. Qual reune todos os seus valores?'
+            ]
+        };
+
+        // Função para obter resposta do mentor
+        async function getResponse(message) {
+            if (!currentMentor) return 'Selecione um mentor primeiro.';
+            
+            const responses = mentorResponses[currentMentor.id];
+            if (responses && responses.length > 0) {
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+            return 'Essa é uma pergunta interessante. Deixe-me pensar sobre isso...';
+        }
+
+        // Inicializar
+        renderMentors();
+    </script>
+</body>
+</html>
