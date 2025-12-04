@@ -1,138 +1,179 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>MIND.AI - Sistema Operacional de Vida</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai"></script>
-    <style>
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
-        body { min-height: max(884px, 100dvh) }
-    </style>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#13c8ec",
-                        "background-light": "#f6f8f8",
-                        "background-dark": "#101f22"
-                    },
-                    fontFamily: {
-                        "display": ["Manrope", "sans-serif"]
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-background-light dark:bg-background-dark font-display">
-<div id="app"></div>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seleção de Mentores - Final V2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <script>
-    const API_KEY = 'AIzaSyAy4nB2H6XqQ1p0wK1mL2nO3pQ4rS5tU6v';
-    let currentMentor = 'Estrategista';
-    let messages = [];
-    const mentores = [
-        { nome: 'Estrategista', emoji: '⚔️', descricao: 'Planejamento e foco' },
-        { nome: 'Curador', emoji: '🎨', descricao: 'Seleção e refinamento' },
-        { nome: 'Cientista', emoji: '🔬', descricao: 'Análise e dados' },
-        { nome: 'Estoico', emoji: '🏛️', descricao: 'Sabedoria e resiliência' },
-        { nome: 'Mistico', emoji: '✨', descricao: 'Intuição e propósito' },
-        { nome: 'Educador', emoji: '📚', descricao: 'Aprendizado contínuo' },
-        { nome: 'Terapeuta', emoji: '💚', descricao: 'Bem-estar emocional' },
-        { nome: 'Quantum', emoji: '⚛️', descricao: 'Inovação radical' },
-        { nome: 'Catalisador', emoji: '🚀', descricao: 'Ação e implementação' },
-        { nome: 'Mesa Redonda', emoji: '🤝', descricao: 'Perspectivas múltiplas' }
-    ];
-    function mostrarHome() {
-        const app = document.getElementById('app');
-        let mentoesHtml = '';
-        for (let i = 0; i < mentores.length; i++) {
-            mentoesHtml += `<button onclick="iniciarChat('${mentores[i].nome}')" style="background:#101f22;border:1px solid #234248;padding:20px;border-radius:12px;cursor:pointer;color:white;text-align:center"><div style="font-size:32px;margin-bottom:10px">${mentores[i].emoji}</div><div style="font-weight:600;margin-bottom:4px">${mentores[i].nome}</div><div style="font-size:12px;color:#999">${mentores[i].descricao}</div></button>`;
-        }
-        app.innerHTML = `
-            <div style="min-height:100dvh;background:#101f22;color:white;padding:20px;display:flex;flex-direction:column">
-                <div style="text-align:center;margin-bottom:40px">
-                    <h1 style="font-size:32px;font-weight:700;margin-bottom:8px">MIND.AI</h1>
-                    <p style="color:#999;font-size:14px">Sistema Operacional de Vida</p>
-                </div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;flex:1">
-                    ${mentoesHtml}
-                </div>
-            </div>
-        `;
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#6366F1",
+            "background-light": "#F3F4F6",
+            "background-dark": "#111827",
+          },
+          fontFamily: {
+            display: ["Roboto", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "1rem",
+          },
+        },
+      },
+    };
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    function iniciarChat(mentor) {
-        currentMentor = mentor;
-        messages = [];
-        mostrarChat();
+    body {
+      min-height: max(884px, 100dvh);
     }
-    async function enviarMensagem() {
-        const input = document.getElementById('messageInput');
-        const msg = input.value.trim();
-        if (!msg) return;
-        messages.push({ role: 'usuario', conteudo: msg });
-        input.value = '';
-        renderChat();
-        const resposta = await obterRespostaGemini(msg);
-        messages.push({ role: 'mentor', conteudo: resposta });
-        renderChat();
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
     }
-    async function obterRespostaGemini(msg) {
-        const respostasGemini = {
-            'Estrategista': 'Excelente pergunta! Vou ajudá-lo a desenvolver uma estratégia clara. Primeiro, identifiquemos seus objetivos principais e os passos necessários para alcançá-los.',
-            'Curador': 'Obrigado por compartilhar isso comigo. Vou ajudar você a refinar suas ideias e escolher as melhores opções para você.',
-            'Cientista': 'Interessante! Vamos analisar os dados e as evidências. A ciência nos ensina que é importante ter uma base sólida antes de tomar decisões.',
-            'Estoico': 'Sabemos que nem tudo está sob nosso controle. O que importa é como respondemos aos desafios. Vamos focar no que realmente podemos controlar.',
-            'Mistico': 'Sinta a energia dessa pergunta. Às vezes, a resposta que buscamos já existe dentro de nós. Deixe-me ajudá-lo a encontrá-la.',
-            'Educador': 'Que ótima oportunidade de aprendizado! Vamos explorar isso juntos e construir conhecimento significativo.',
-            'Terapeuta': 'Entendo seus sentimentos. É importante cuidar de si mesmo. Como você tem se sentido ultimamente?',
-            'Quantum': 'Múltiplas possibilidades coexistem! Vamos explorar diferentes perspectivas e encontrar soluções inovadoras.',
-            'Catalisador': 'Ação é a chave! Vamos transformar essas ideias em realidade. O que podemos fazer agora mesmo?',
-            'Mesa Redonda': 'Diversos pontos de vista são valiosos. Vamos considerar diferentes perspectivas para uma decisão mais sábia.'
-        };
-        return respostasGemini[currentMentor] || 'Como posso ajudá-lo melhor?';
-    }
-    function renderChat() {
-        let html = '<div style="display:flex;flex-direction:column;gap:15px;">';
-        for (let m of messages) {
-            if (m.role === 'usuario') {
-                html += `<div style='text-align:right;margin:10px 0'><div style='background:#13c8ec;color:white;padding:12px;border-radius:12px;display:inline-block;max-width:70%'>${m.conteudo}</div></div>`;
-            } else {
-                html += `<div style='text-align:left;margin:10px 0'><div style='background:#234248;color:white;padding:12px;border-radius:12px;display:inline-block;max-width:70%'>${m.conteudo}</div></div>`;
-            }
-        }
-        html += '</div>';
-        document.getElementById('messagesArea').innerHTML = html;
-        document.getElementById('messagesArea').scrollTop = document.getElementById('messagesArea').scrollHeight;
-    }
-    function mostrarChat() {
-        const app = document.getElementById('app');
-        const mentorData = mentores.find(m => m.nome === currentMentor) || mentores[0];
-        app.innerHTML = `
-            <div style='height:100dvh;display:flex;flex-direction:column;background:#101f22;color:white'>
-                <div style='display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid #234248'>
-                    <button onclick='mostrarHome()' style='background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:8px'>←</button>
-                    <h2 style='font-size:18px;font-weight:600'>${mentorData.emoji} ${currentMentor}</h2>
-                    <button style='background:none;border:none;color:white;font-size:24px;cursor:pointer'>⋮</button>
-                </div>
-                <div id='messagesArea' style='flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px'></div>
-                <div style='display:flex;gap:10px;padding:20px;border-top:1px solid #234248'>
-                    <input id='messageInput' type='text' placeholder='Digite sua mensagem...' onkeypress="if(event.key==='Enter')enviarMensagem()" style='flex:1;background:#234248;border:1px solid #345860;padding:12px;border-radius:12px;color:white;font-size:14px' />
-                    <button onclick='enviarMensagem()' style='background:#13c8ec;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:20px'>→</button>
-                </div>
-            </div>
-        `;
-        renderChat();
-        document.getElementById('messageInput').focus();
-    }
-    window.onload = () => mostrarHome();
-</script>
-</body>
-</html>
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="mx-auto max-w-md bg-background-dark p-4">
+<header class="flex items-start justify-between mb-8">
+<div class="flex items-center space-x-4">
+<div class="bg-primary w-12 h-12 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl">spark</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-white">MIND.AI</h1>
+</div>
+</div>
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</header>
+<main class="space-y-3">
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="A man analyzing data on a futuristic screen in a modern office." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD38RF-mjao4fPuSaoKLtIHgIsYLedRUUlC8KexoonBH8sm8tknoZ_1DuQpRNVCfHEM1LxUO6O8UiF21kjizynE-dStjjqG4j9AIzER9UJHjiHmSKFSU8tryth5u3a20ISeAYW4sK-coXvohNZ13NdRLMJ44nCxu9xNfOgiCE3T0NmVtobktbh3rtRnyjDmvTZXLNiDEjpfF4YNYyxtHUvdoL-8xNt-AwkAoOz5QNlwRdJYZ_eQS_MJodEzfomEE8pZZoGc-2JaldRy"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Close up of a man in a blue shirt working on a laptop." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV7R3T1U4zRLoDuLFkcc6pAAdBAUZ2Ypzg72NXsHOs5BW4zS8SJvc9AIUh3WUqQuxvujmyc64nKSDIkHF8cQ462DH21QBrCxjHSNvDrvM2m_vYf0LBMO5li-6x5A4qh5uP1LcD55iDxEriuLzytQQmsg3Sv3H-jfT0LGNeSpWFyrmLYCYOYmiPd9fpl-QgseTDZFD71aPccwANtp5t3MuLOdQpbC7m94f8lfHk5EuktuapwiqL-ePU7bgadLK8U5XfIK440v2d9EMG"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">O Estratégista</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">Liderança &amp; Negócios</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="A unique representation of wisdom and compassion, visually combining the figure of Jesus and a stoic philosopher's statue." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGoCuIP_jE6NqlnJvqrbTAuPFguTeSUi2SxLR8EaTbP_DjCHh7hee71fNgbRViLtOS8Btu6Pr7zEqIowv20vGS4rmd-MG7cZdOjAHu_sS7pM21VjR_jG4llsf6ULXXqXyRK_CQ0ShdeYYfxEYb3jd4F1mYvE1s8Gkc8T-hzNmMuqxLRomuYg9WEdr4vc3Ox-xFitXm-OHhzkBgD1l1R_4kMUlYVd2sm--RNL-weMdg1RP5B-KYAjcxyZAoZk5zBs81kowE0HWf29ta"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Close up of a marble bust of a stoic philosopher." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVolysPXY9WbOSpti8wTk6VOx5XWpoEDEebHQYrv0TalZX-as2sIyboaxwavOaiHUGD8PEjZG3cfy2iRydNlE3fbxTkUzu941_aKMzcNT2EA8h25iwCbn5sEy6hM8xwtGLrrR3ZXfgTtXW0DAoL9SFBjwFGx3coj5d6q-q4tuOIqbW5zEfkrPjBW4T237Ndse9gkKFiev6WdRMrJtmc-qpjRGra-6d4qF4WUaGU8WL3upD7jijsDxjn7BvV5mQj9CL0f_UTrmokOdq"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">O Sábio</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">FILOSOFIA SENICA AMOR E PERDÃO</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="A wise Rabbi holding an ancient, mystical book." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi5hEeQ2XYI3hI6BSHjxAxtPTfdu0_GCB9R6Lst_fW-nt4HAuKT2M1mzoGJCRLnVmQ_0MDtvqRPTrFGTIospmpHlS1WlUZ2kqAs50FEvjmX5d0LTYZa6U-0D1Gb9Ouzkhd6ZT2L9fLcn-f2LsNb6SBsMirMe3sj-CSiZr1BFls4Yc7bF3sTm8YZxDpAOqZTnVMwsMnEF5fYvPMRUaXQfqh7DvYcOSd52hHOzo7QBY6StBi6_kTQguW65SF1qDIQzpZyofx9r7ygeNM"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Portrait of a wise Rabbi with a long white beard." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfxqQ9t_D2MWDoNs5qAQIAYYd-zRijqfz84BQTMaER2lsrCyvKv5E5K1XMXdHZDSSlzHuI-f9SriInrHdDpXwS0Z_0r_LLDl25tE97DWdq8XPz3W2N3e241sYo4R_VJjKszB6YE8_yd-JsviSSKN7eQzmPV356xeDnmGfkCfTFy7VVgjff7DypqjJsNMtzsjKjovXZkqf-B0gYmgSKtGVmpfx2-msA08oGx6sV9P0woy_FGUPrsdfpSTVjP3KMx4XkSBV51taSL4N0"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">Rabi Shimon</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">Kabbalah Prática &amp; Sabedoria Oculta</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="An inspiring learning scene with a mentor explaining something to a student with a glow of knowledge." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYQDcqyLyjqH9PLDWTQ7wBITPOp7VrzMBDf-zlzY8vtJ3Azq-5DuMnWZ-fmysKrO9rUHMnmSYF1eMpdDi-BE1LrfroCP_lp-qwzGAK-RHvvOQzZd-UyEy9Un5XNqikW3sT3Bw_XToLwMFFNE4pxlH9U5R-avyMzixeXxtRQDQg3weoKznKHKsb_Knt-C-8_OkS788Cb_Trf1OWJLZdhCNroZNwF_4sySbEPIGiPqg483ar_DRGau9_v4YL8t0Pr0neFTrIHDZdTMWf"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Close up of a mentor's face, filled with wisdom and kindness." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu64veMHQGzI_5EahtyDu0f6m_j1g5mb7j2XT7xrqJsNQ8RCAGTyIggikpFszzkJuzR_U3UkII1MsJECW7naQq-XvdJ1sHZfGQJXLgoOmRn1tcILSClKUHb4JFmhu_37vV2tTtmTKMmydCoVhPTSEKwDpDSXTOTw78L9lWzHYQ-RzIhGiHRJnU6aS-LgvmNWEodnajpL_WfTpMmP21EoOvFrjsmjb6NMay6RFkTLwUa5_Z6KKYZ4z1M7MAu3PtY9cRfrHzhXuFI6b1"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">O Educador</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">Conhecimento &amp; Aprendizado</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="Abstract representation of energy and transformation with bright sparks and a figure in motion." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB93bBd_ajO0KyO6Swjqdd7A8UNEA5nyM03X0dQd1aV0yTTJhChhJz02kPJpk3-VfxfiwwYJ1x_mXpKTWkuuzgsLBzTN7YJOITovbKV5fGE0FAPi1ayo7ymsh2vVRNDAFRC_1d_IzuyRfWy8WOf7yUJgEifSOQYsC9KAiTsa8m4OCSQ7nfHV70klCDChHY60tk-s6LwhW6KJIeNiNf3uLny3vRV3LQ6ny5lcq4wTDcBWQCV1nCNKWp8MzNDtrGpAimFCeBKG3rKmZue"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Close up of energetic sparks representing transformation." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXpdCgR12B7msqnT5rYQhNPA1L2HIl3nYbyUq_-uOyarcNxTTRlm6TiM0hjCaKpmefr__uMlsdWDGZ6O8YZKJLuVIhneey1Rbpba2uLHu1ZeL3fy6giG3h7cYmwzzFvzmzwmgZr0F2DoH_W_z2-6S4KVj_Xk6jJLaoyKM34EKkwdthuahAUWpr3c-yZBJDn-xqz5LLqeCjB3P5uoa8Vg1U4TqWCHkl3Buet6wWZ6MMAQpmlyMuTspWAr6L0EX5fpZiRwIlcaJzfAfP"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">O Catalisador</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">Transformação e Impulso</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="A serene beach at sunset with calm waves." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_dmmTzzydI6aIS9nY2n7MU7gsY8k7hNubO9XExi1y4H0Yal6lAOiULYvPt_wZD90OjqO7SCdk5aPd9QZSo27UGQmx0q1QJmq9dFXF_05FrCGKW49l-ncoRQ_VaZJyKtqZFetNwIcJ6qR64-_vQVuBcIVH3_DyYRCm0fF1ocg7gfFSP_0BfbY3AJBwkigPTipydSyKC8c_v6uGRk5cAbfBWm5KcsUqpgKAiGVGql-57nB8ywCOb8choiW6ASoXi-xvOnQpDRTwxL69"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Close up view of a serene beach at sunset." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuQtOgGiL3qDC6hJvmCpodw-wHuzsykorekx4XDojJZh2SuCtgpVPK2oKhX766v117pT0aiXw-zsPUWuZBzzR5IluLBNERVd0ERXSD_wFH7DlYtCPw_iELN3FVv6GntarFQdwl2eq7oFiFf59QJcHKrW9Gd6ZCvKFRvxUUic38VpY0cJFYhRbQRkAFT0L1WIb6eQyh0nd5Q0-AKC_bvMrBJLCMZEkN5rbZo_Hl1r6379YpVKlbJw4AOlLA55fh2dXGhBCYf3N_fY1f"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">O Terapeuta</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">Relacionamentos (Gottman)</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="An abstract cosmic explosion of light and energy." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDtx849D5fV00nWPjeZlUHKubu4Lu-WwPy8ixJZ0oqu0p9C_Tv5FNP3dEtoMt5MGO_vTbgFRZNZxH3UUFEF4DVJTS5BQWhe87c63M5G02drZ_eNkfr5kpoivRqQcciRAQtuf2pvkilnaConibI5MSdJlvFw4tBlP-tl9msVoBr3GcqBmdQLbLQi8zHuHcW6rQ5DGWZlOOYjm3ZO4qhDgjFkJpYCdAT0RS7rnzxqNCJgBdnvLy-fu7FxGTNu1Ci4p70wWkjhk5aOS3C"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="A bright fountain of light." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANfLGr-m47yFBxJaccV3DiC2l29dBAZD5ZN8fNB6iamB2SzfLvZwsaXzf6JpnRolaHFgc-E5kRdFXs0_2Ja3rik1Galr2V7u8pV9zCmT6JYbjNckg_uBNF438WJR_C1HmfjLPSVLWfMHU-sacpP-5DJt54YS7T0Qhqw6OEsAMN6LA8EJQNRfhah9eJUmwTUran4-7FSFCpJsjqvcriE0aJD1wIrw5U8eiFHlglrMP37q1iyl8RoxJRuFsvK2kWsdkMFMQ-VjPRl5u1"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">Quantum Lumen</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">Criação da Realidade</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group" href="#">
+<img alt="An elegant dark wood round table surrounded by several empty chairs, with a spotlight from above." class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtOFOPPaIcfInAWb90oyAWzCoew0ZEGF3ATa9yQJaq4E1gET0yhUoHRt5EfKTTkT7VIDtM7OVL8Vtea_Tz-rlLsMB6qRR1_LYSC6Ikx3qMcchYlZmf4X6EoyJtLxs2tIuApAzxMwDJbsqEV7HB3NWvNA-PAjplOLndCYmNzVm4jiDmKVcBqtIsifTFhHGr8o28i0jqusPrtGTcuV-6lo5fy1imilgPXOTnBC-I2XWvQYFXmbs7Ml_xmH-WI2x1c4gER5-nq964TgYN"/>
+<div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-40 transition-colors"></div>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Close up of a diverse group of people standing together." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMxL0JY-B3CObk1_UdkgoJaVwRcK2SdlxSOFiIk1sAbwQOA4knJXyUFReKMnI7C91lXjICfDAtJGbczTdffSRzO7u7RKCLTuuCfyKchfoWkV_1-Zs0Roo2VM-yTrZO1X9Y9Q9rYsBfy731e2KOWWgOxu4j9dJFia3sIzwPte9kgc47CwmZ9aH_3NVuGlEVewkr6cT_Xz4w-3jqK9IRVFdv8KYN9t70YDe8lrANouek9EJb0aYLED1Lq8TOpZj_eVGxrdnH4GXj0GFO"/>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">Mesa Redonda</h2>
+<p class="text-xs uppercase text-gray-300 tracking-wider">Conselho Unificado</p>
+</div>
+</div>
+</a>
+<a class="relative flex items-center h-20 rounded-2xl overflow-hidden group bg-gray-800" href="#">
+<img alt="A stylized representation of a chat interface." class="absolute right-0 bottom-0 h-full w-auto opacity-20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdc4Ho5I8uGuyas4RG9fIppd9KQaTYG_envWC4CFdjuDd4MQq9pAhPD5Bzg_kln4V1AkG7Cbn-zWWs6OgYck91Fk7VGzTNXaDwrUKZQiiIUfyzTmUXmw4YeB6-VegSjveUpkjrBnRLfBrbt6VnvG3CeFefWH7SCKI0i8ryeilC_mztfJWKznXEUB7GLyD_YMuwp2yG3A7BadFi1-NN_Dqn0PjXodwmH8uF_dimx_JeWcda-UBUu7fdZJEz1ZCScaNeoAlsOR8CjAsj"/>
+<div class="relative flex items-center w-full px-4 space-x-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-gray-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-gray-400 text-3xl">chat_bubble</span>
+</div>
+<div class="text-white">
+<h2 class="font-bold text-lg">Chat</h2>
+<p class="text-xs uppercase text-gray-400 tracking-wider">Comunicação</p>
+</div>
+</div>
+</a>
+</main>
+</div>
+
+</body></html>
